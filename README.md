@@ -1,5 +1,6 @@
-# ngo-teacolhe-autism
+# ngo-teacolhe-autism 
 ngo-teacolhe-autism-college-project
+
 🧩 TEAcolhe - Autism Support and Awareness Platform
 Project Status SEO TEAcolhe is a Single Page Application (SPA) designed to provide accessible, welcoming, and scientifically grounded information about Autism Spectrum Disorder (ASD). The focus of this project goes beyond visuals: it is an application optimized for search engines (Technical SEO), ensuring that information reaches those who need it, with uncompromised accessibility and performance.
 
