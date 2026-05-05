@@ -170,3 +170,136 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 });
+
+// ==========================================
+// REGISTRO DO SERVICE WORKER E LÓGICA PWA
+// ==========================================
+
+let deferredPrompt;
+const btnInstallPWA = document.getElementById('btn-install-pwa');
+
+// 1. Registro do Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker registrado com escopo:', registration.scope);
+            })
+            .catch((error) => {
+                console.error('Falha ao registrar o Service Worker:', error);
+            });
+    });
+}
+
+// 2. Interceptação do evento de instalação
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Previne o Chrome de exibir o mini-infobar automaticamente na tela
+    e.preventDefault();
+    // Salva o evento para ser disparado posteriormente
+    deferredPrompt = e;
+    
+    // Mostra o botão de download no footer
+    if (btnInstallPWA) {
+        btnInstallPWA.style.display = 'flex';
+    }
+});
+
+// 3. Lógica de clique do Botão de Download
+if (btnInstallPWA) {
+    btnInstallPWA.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+            return;
+        }
+        
+        // Exibe o prompt de instalação nativo
+        deferredPrompt.prompt();
+        
+        // Aguarda a resposta do usuário
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Escolha do usuário no prompt de instalação: ${outcome}`);
+        
+        // O prompt só pode ser usado uma vez, então descartamos a referência
+        deferredPrompt = null;
+        
+        // Esconde o botão após a interação
+        btnInstallPWA.style.display = 'none';
+    });
+}
+
+// 4. Confirmação de instalação concluída
+window.addEventListener('appinstalled', () => {
+    console.log('PWA instalado com sucesso pelo usuário.');
+    // Garante que o botão suma se a instalação for feita por outros meios (ex: barra de endereço)
+    if (btnInstallPWA) {
+        btnInstallPWA.style.display = 'none';
+    }
+    deferredPrompt = null;
+});
+
+
+// ==========================================
+// REGISTRO DO SERVICE WORKER E LÓGICA PWA
+// ==========================================
+
+let deferredPrompt;
+const pwaContainer = document.getElementById('pwa-install-container');
+const btnInstallPWA = document.getElementById('btn-install-pwa');
+
+// 1. Registro do Service Worker
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+        navigator.serviceWorker.register('/sw.js')
+            .then((registration) => {
+                console.log('Service Worker registrado com escopo:', registration.scope);
+            })
+            .catch((error) => {
+                console.error('Falha ao registrar o Service Worker:', error);
+            });
+    });
+}
+
+// 2. Interceptação do evento de instalação
+window.addEventListener('beforeinstallprompt', (e) => {
+    // Previne o Chrome de exibir a barra padrão na parte inferior
+    e.preventDefault();
+    // Salva o evento para ser acionado ao clicar no botão
+    deferredPrompt = e;
+    
+    // Mostra o container fixo adicionando a classe 'show'
+    if (pwaContainer) {
+        pwaContainer.classList.add('show');
+    }
+});
+
+// 3. Lógica de clique do Botão de Download
+if (btnInstallPWA) {
+    btnInstallPWA.addEventListener('click', async () => {
+        if (!deferredPrompt) {
+            return;
+        }
+        
+        // Exibe o prompt nativo de instalação do sistema/navegador
+        deferredPrompt.prompt();
+        
+        // Aguarda a resposta do usuário (se aceitou ou recusou)
+        const { outcome } = await deferredPrompt.userChoice;
+        console.log(`Resultado da instalação PWA: ${outcome}`);
+        
+        // Limpa o prompt
+        deferredPrompt = null;
+        
+        // Esconde o botão da tela (adicionando fluidez)
+        if (pwaContainer) {
+            pwaContainer.classList.remove('show');
+        }
+    });
+}
+
+// 4. Se o app for instalado com sucesso (por qualquer meio)
+window.addEventListener('appinstalled', () => {
+    console.log('PWA TEAcolhe instalado com sucesso!');
+    if (pwaContainer) {
+        pwaContainer.classList.remove('show');
+    }
+    deferredPrompt = null;
+});

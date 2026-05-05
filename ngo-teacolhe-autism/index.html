@@ -10,41 +10,14 @@
     <meta name="author" content="TEAcolhe">
     <meta name="robots" content="index, follow">
     <link rel="canonical" href="https://ngo-teacolhe.netlify.app/">
-    <link rel="alternate" hreflang="pt-br" href="https://ngo-teacolhe.netlify.app/">
-    <link rel="alternate" hreflang="x-default" href="https://ngo-teacolhe.netlify.app/">
-    <link rel="icon" type="image/png" href="/image/TEAcolhe.png">
-    <meta property="og:type" content="website">
-    <meta property="og:url" content="https://ngo-teacolhe.netlify.app/">
-    <meta property="og:title" content="TEAcolhe - Acolhimento e Informação sobre Autismo">
-    <meta property="og:description" content="Descubra recursos, artigos e apoio para famílias e pessoas no espectro autista. Juntos pela inclusão.">
-    <meta property="og:image" content="https://ngo-teacolhe.netlify.app/image/TEAcolhe.png">
-    <meta property="og:locale" content="pt_BR">
-    <meta property="og:site_name" content="TEAcolhe">
     
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="TEAcolhe | Apoio ao Autismo">
-    <meta name="twitter:description" content="Informação segura e acolhimento para a comunidade autista.">
-    <meta name="twitter:image" content="https://ngo-teacolhe.netlify.app/image/banner.png">
-
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "TEAcolhe",
-      "url": "https://ngo-teacolhe.netlify.app/",
-      "logo": "https://ngo-teacolhe.netlify.app/image/TEAcolhe.png",
-      "description": "Plataforma de apoio e informação sobre o Transtorno do Espectro Autista (TEA).",
-      "sameAs": [
-        "https://instagram.com/teacolhe"
-      ],
-      "contactPoint": {
-        "@type": "ContactPoint",
-        "contactType": "customer support",
-        "areaServed": "BR",
-        "availableLanguage": "Portuguese"
-      }
-    }
-    </script>
+    <!-- PWA Meta Tags -->
+    <link rel="manifest" href="/manifest.json">
+    <meta name="theme-color" content="#4AC6F3">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="TEAcolhe">
+    <link rel="apple-touch-icon" href="/image/TEAcolhe.png">
 
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -86,8 +59,10 @@
             </div>
         </section>
 
+        <!-- Seções mantidas iguais ao seu original -->
         <section id="oqtea" class="section bg-azul">
-            <div class="section-header">
+            <!-- ... Seu conteúdo da seção ... -->
+             <div class="section-header">
                 <h2>O que é o TEA</h2>
             </div>
             
@@ -122,6 +97,7 @@
         </section>
 
         <section id="convivendo" class="section bg-amarelo">
+            <!-- ... Seu conteúdo da seção ... -->
             <div class="section-header">
                 <h2>Convivendo</h2>
             </div>
@@ -157,6 +133,7 @@
         </section>
 
         <section id="recursos" class="section bg-azul">
+            <!-- ... Seu conteúdo da seção ... -->
             <div class="section-header">
                 <h2>Recursos e Suporte</h2>
             </div>
@@ -198,11 +175,19 @@
             <a href="#" aria-label="Instagram"><ion-icon name="logo-instagram"></ion-icon></a>
             <a href="#" aria-label="WhatsApp"><ion-icon name="logo-whatsapp"></ion-icon></a>
         </div>
+
         <div class="footer-links">
             <a href="#">Sobre Nós</a> &bull; <a href="#">Privacidade</a> &bull; <a href="#">Contato</a>
         </div>
         <p class="copyright">Copyright &copy; 2025 - TEAcolhe. Todos os direitos reservados.</p>
     </footer>
+
+    <!-- BOTÃO PWA FIXO (Mova para cá, fora do fluxo do footer) -->
+    <div id="pwa-install-container" class="pwa-install-container">
+        <button id="btn-install-pwa" class="cta-button pwa-btn">
+            <ion-icon name="download-outline"></ion-icon> Instalar App TEAcolhe
+        </button>
+    </div>
 
     <a href="#top" class="btn-top" aria-label="Voltar ao topo">
         <ion-icon name="chevron-up-outline"></ion-icon>

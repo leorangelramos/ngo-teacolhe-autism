@@ -346,6 +346,75 @@ footer {
 .btn-top.show { opacity: 1; visibility: visible; }
 .btn-top:hover { transform: translateY(-5px); background: var(--azul-escuro); }
 
+
+
+
+/* ==========================================
+   ESTILOS DO BOTÃO PWA FIXO
+   ========================================== */
+.pwa-install-container {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    display: none; /* Mantido oculto via CSS, revelado pelo JS adicionando a classe .show */
+    background: var(--vidro);
+    padding: 10px 15px;
+    border-radius: 50px;
+    box-shadow: var(--sombra-forte);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+.pwa-install-container.show {
+    display: flex;
+    animation: fadeInUpPWA 0.5s ease forwards;
+}
+
+.pwa-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    font-size: 1rem;
+    padding: 10px 25px;
+    white-space: nowrap;
+    margin: 0;
+}
+
+/* Evita que o botão PWA sobreponha o botão de voltar ao topo em telas menores */
+@media (max-width: 768px) {
+    .pwa-install-container {
+        bottom: 80px; /* Sobe um pouco para não bater no menu mobile ou btn-top */
+        width: 90%;
+    }
+    .pwa-btn {
+        width: 100%;
+    }
+}
+
+@keyframes fadeInUpPWA {
+    from { opacity: 0; transform: translate(-50%, 30px); }
+    to { opacity: 1; transform: translate(-50%, 0); }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @media (max-width: 768px) {
     .menu-toggle { display: block; }
     .nav-desktop { display: none; }
